@@ -28,6 +28,7 @@ body{
 
 main{
     width: 80vw;
+    max-width: 280px;
 
     display: flex;
     justify-content: center;

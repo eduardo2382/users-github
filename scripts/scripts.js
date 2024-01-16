@@ -8,8 +8,6 @@ function User(object){
     this.repositories = object.repos.length
 }
 
-
-
 async function searchUserOnGithub(username){
     let url = `https://api.github.com/users/${username}`
 

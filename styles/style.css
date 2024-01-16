@@ -20,7 +20,8 @@ body{
     justify-content: center;
     align-items: center;
     
-    
+    height: 100vh;
+    overflow: hidden;
 
     background-color: var(--bg);
 }
@@ -31,12 +32,16 @@ main{
 
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     border-radius: 8px;
 
     padding: 16px;
 
     background-color: var(--main-bg);
+
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.486);
 }
 
 .profile{
@@ -70,7 +75,7 @@ main{
 }
 
 .username{
-    font-size: 15px;
+    font-size: 0.9em;
     font-weight: 400;
 
     color: var(--text-light);
@@ -91,4 +96,43 @@ main{
 .follows,
 .repositories{
     color: var(--text-light);
+}
+
+.line{
+    height: 0.9px;
+    width: 95%;
+
+    margin-top: 12px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.list-repositories{
+    margin-top: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    width: 100%;
+    max-height: 115px;
+    overflow: scroll;
+}
+
+.repositories-name{
+    text-decoration: none;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 1em;
+    font-weight: 400;
+
+    height: 25px;
+}
+
+.repositories-name span i{
+    color: #1F1F1F;
+
+    font-size: 1.1em;
 }

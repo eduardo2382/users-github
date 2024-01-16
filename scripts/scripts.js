@@ -5,7 +5,7 @@ function User(object){
     this.followers = object.user.followers
     this.following = object.user.following
     this.location = object.user.location
-    this.repositories = object.repos.length
+    this.repositories = object.repos
 }
 
 async function searchUserOnGithub(username){
@@ -18,21 +18,21 @@ async function searchUserOnGithub(username){
 }
 
 async function renderUserData(){
-    let user = new User(await searchUserOnGithub('gustavoguanabara'))
+    var userGithub = new User(await searchUserOnGithub('eduardo2382'))
 
-    document.querySelector('.image-profile').setAttribute('src', user.imageProfile)
+    document.querySelector('.image-profile').setAttribute('src', userGithub.imageProfile)
 
-    document.querySelector('.name').innerText = user.name
+    document.querySelector('.name').innerText = userGithub.name
 
-    document.querySelector('.username').innerText = user.username
+    document.querySelector('.username').innerText = userGithub.username
 
-    document.querySelector('.followers').innerText = user.followers
+    document.querySelector('.followers').innerText = userGithub.followers
 
-    document.querySelector('.following').innerText = user.following
+    document.querySelector('.following').innerText = userGithub.following
 
-    document.querySelector('.address').innerText = user.location
+    document.querySelector('.address').innerText = userGithub.location
 
-    document.querySelector('.repositories-number').innerText = user.repositories
+    document.querySelector('.repositories-number').innerText = userGithub.repositories.length
 }
 
 renderUserData()

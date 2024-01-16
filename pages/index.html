@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users Gihub</title>
+    <title>Users Github</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
-    <script src="../scripts/scripts.js"></script>
+
+    <main>
+        <section class="profile">
+            <div class="user">
+                <img src="https://avatars.githubusercontent.com/u/75285475?v=4" class="image-profile" alt="imagem do perfil do usuario no Github" >
+                <div class="names">
+                    <span class="name">Jose Eduardo</span>
+                    <span class="username">eduardo2382</span>
+                </div>
+            </div>
+            <div class="user-dates">
+                <span class="follows">
+                    <i class="ri-user-follow-line"></i>
+                    <span class="follower">2</span>
+                    follower
+                    <span class="following">22</span>
+                    following
+                </span>
+                <span class="location">
+                    <i class="ri-map-pin-line"></i>
+                    <span class="address">Sergipe, Brasil</span>
+                </span>
+                <span class="repositories">
+                    <i class="ri-git-repository-line"></i>
+                    <span class="repositories-number">22</span>
+                    repositories
+                </span>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../scripts/scripts.js"></script>
 </body>
 </html>

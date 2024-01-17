@@ -1,3 +1,6 @@
+const message = document.querySelector('.message')
+const profile = document.querySelector('.profile')
+
 function User(object){
     this.imageProfile = object.user.avatar_url
     this.name = object.user.name
@@ -24,8 +27,8 @@ async function checkUser(){
 }
 
 async function renderUserData(userGithub){
-    document.querySelector('.message').style.display = 'none'
-    document.querySelector('.profile').style.display = 'block'
+    message.style.display = 'none'
+    profile.style.display = 'block'
 
     document.querySelector('.image-profile').setAttribute('src', userGithub.imageProfile)
 
@@ -49,7 +52,8 @@ async function searchUserOnGithub(username){
 
         renderUserData({user: datesUser.data, repos: repos.data})
     } catch(e){
-        let message = document.querySelector('.message')
+        profile.style.display = 'none'
+        message.style.display = 'block'
         message.innerText = `Erro ao buscar usuario '${e.response.status}'`
     }
 }

@@ -1,16 +1,6 @@
 const message = document.querySelector('.message')
 const profile = document.querySelector('.profile')
 
-function User(object){
-    this.imageProfile = object.user.avatar_url
-    this.name = object.user.name
-    this.username = object.user.login
-    this.followers = object.user.followers
-    this.following = object.user.following
-    this.location = object.user.location
-    this.repositories = object.repos
-}
-
 //Eventos
 document.querySelector('.search-btn').onclick = () => checkUser()
 

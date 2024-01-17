@@ -8,17 +8,24 @@ function User(object){
     this.repositories = object.repos
 }
 
-async function searchUserOnGithub(username){
-    let url = `https://api.github.com/users/${username}`
+//Eventos
+document.querySelector('.search-btn').onclick = () => checkUser()
 
-    let datesUser = await axios.get(url)
-    let repos = await axios.get(datesUser.data.repos_url)
+// Métodos
 
-    return {user: datesUser.data, repos: repos.data}
+async function checkUser(){
+    let searchText = document.querySelector('.search-text')
+    let userFieldWithText = searchText.value.length || false
+
+    if(userFieldWithText){
+        await searchUserOnGithub(searchText.value)
+        searchText.value = ''
+    }
 }
 
-async function renderUserData(){
-    var userGithub = new User(await searchUserOnGithub('eduardo2382'))
+async function renderUserData(userGithub){
+    document.querySelector('.message').style.display = 'none'
+    document.querySelector('.profile').style.display = 'block'
 
     document.querySelector('.image-profile').setAttribute('src', userGithub.imageProfile)
 
@@ -35,4 +42,14 @@ async function renderUserData(){
     document.querySelector('.repositories-number').innerText = userGithub.repositories.length
 }
 
-renderUserData()
+async function searchUserOnGithub(username){
+    try{
+        const datesUser = await axios.get(`https://api.github.com/users/${username}`)
+        const repos = await axios.get(datesUser.data.repos_url)
+
+        renderUserData({user: datesUser.data, repos: repos.data})
+    } catch(e){
+        let message = document.querySelector('.message')
+        message.innerText = `Erro ao buscar usuario '${e.response.status}'`
+    }
+}

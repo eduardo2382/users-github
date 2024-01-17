@@ -26,25 +26,6 @@ async function checkUser(){
     }
 }
 
-async function renderUserData(userGithub){
-    message.style.display = 'none'
-    profile.style.display = 'block'
-
-    document.querySelector('.image-profile').setAttribute('src', userGithub.imageProfile)
-
-    document.querySelector('.name').innerText = userGithub.name
-
-    document.querySelector('.username').innerText = userGithub.username
-
-    document.querySelector('.followers').innerText = userGithub.followers
-
-    document.querySelector('.following').innerText = userGithub.following
-
-    document.querySelector('.address').innerText = userGithub.location
-
-    document.querySelector('.repositories-number').innerText = userGithub.repositories.length
-}
-
 async function searchUserOnGithub(username){
     try{
         const datesUser = await axios.get(`https://api.github.com/users/${username}`)
@@ -57,3 +38,24 @@ async function searchUserOnGithub(username){
         message.innerText = `Erro ao buscar usuario '${e.response.status}'`
     }
 }
+
+async function renderUserData(userGithub){
+    message.style.display = 'none'
+    profile.style.display = 'block'
+
+    document.querySelector('.image-profile').setAttribute('src', userGithub.user.avatar_url)
+
+    document.querySelector('.name').innerText = userGithub.user.name
+
+    document.querySelector('.username').innerText = userGithub.user.login
+    console.log(userGithub.user)
+
+    document.querySelector('.followers').innerText = userGithub.user.followers
+
+    document.querySelector('.following').innerText = userGithub.user.following
+
+    document.querySelector('.address').innerText = userGithub.user.location
+
+    document.querySelector('.repositories-number').innerText = userGithub.repos.length
+}
+
